@@ -1,0 +1,51 @@
+version: "3.8"
+
+services:
+  # 1. Container Database
+  db:
+    image: mysql:8.0
+    container_name: mysql_db
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpassword
+      MYSQL_DATABASE: progetto_sistemi
+    volumes:
+      # Carica il file init.sql per creare tabelle e prof in automatico
+      - ./progetto_sistemi.sql:/docker-entrypoint-initdb.dir/init.sql
+    networks:
+      - rete-interna
+
+  # 2. Container PHP Application
+  app:
+    build: .
+    container_name: php_app
+    restart: always
+    volumes:
+      # Monta i file del sito nel container
+      - .:/var/www/html
+    networks:
+      - rete-interna
+    depends_on:
+      - db
+
+  # 3. Container Web Server (Nginx)
+  web:
+    image: nginx:alpine
+    container_name: nginx_web
+    restart: always
+    ports:
+      # Espone la porta HTTP e HTTPS su AWS
+      - "80:80"
+      - "443:443"
+    volumes:
+      - .:/var/www/html
+      - ./nginx.conf:/etc/nginx/conf.d/default.conf
+      - ./ssl:/etc/nginx/ssl
+    networks:
+      - rete-interna
+    depends_on:
+      - app
+
+networks:
+  rete-interna:
+    driver: bridge

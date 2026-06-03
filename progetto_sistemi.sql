@@ -39,9 +39,9 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `username`, `password_hash`, `created_at`) VALUES
-(1, 'prof_rossi', '$2y$10$w6z/D61n/2iNq.S8f6mG6.a0d/4jD9s3E6z.R7R/mK1rJ0C6b.Y.e', '2026-06-03 16:22:31'),
-(2, 'prof_bianchi', '$2y$10$w6z/D61n/2iNq.S8f6mG6.a0d/4jD9s3E6z.R7R/mK1rJ0C6b.Y.e', '2026-06-03 16:22:31'),
-(3, 'prof_verdi', '$2y$10$w6z/D61n/2iNq.S8f6mG6.a0d/4jD9s3E6z.R7R/mK1rJ0C6b.Y.e', '2026-06-03 16:22:31');
+(1, 'prof_rossi', '$2a$12$TC9URky5R/NOGDnUAokzFuaf.krXs7mkbdWDN2wey0ZZyIVAgwCEq', '2026-06-03 16:22:31'),
+(2, 'prof_bianchi', '$2a$12$TC9URky5R/NOGDnUAokzFuaf.krXs7mkbdWDN2wey0ZZyIVAgwCEq', '2026-06-03 16:22:31'),
+(3, 'prof_verdi', '$2a$12$TC9URky5R/NOGDnUAokzFuaf.krXs7mkbdWDN2wey0ZZyIVAgwCEq', '2026-06-03 16:22:31');
 
 --
 -- Indici per le tabelle scaricate
